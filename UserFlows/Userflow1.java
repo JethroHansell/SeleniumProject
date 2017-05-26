@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runners.Parameterized.Parameters;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -31,22 +32,35 @@ public class Userflow1 {
 	
 	public void goToSignIn() {
 		
-	
+	/*
 	System.setProperty("webdriver.chrome.driver", "C:\\Users\\Administrator\\Desktop\\Selenium\\chromedriver.exe");
 	driver = new ChromeDriver();
 	
-	 /*
+	*/
+	 
 	
 	System.setProperty("webdriver.gecko.driver",
 			"C:\\Users\\Administrator\\Desktop\\Selenium\\geckodriver.exe");
 	driver = new FirefoxDriver();
 	//driver.manage().window().maximize();
 	
-	*/
+	
 	
 	driver.get("http://www.automationpractice.com/");
 	
 	}
+	
+	/*
+	@Parameters("browser")
+	public void setup(String browser) throws Exception {
+	if (browser.equalsIgnoreCase("firefox")) {
+	System.setProperty("webdriver.gecko.driver",
+	"C:\\Users\\Administrator\\Desktop\\Selenium\\geckodriver.exe");
+	driver = new FirefoxDriver();
+	}
+	}
+	//This user flow works on both chrome and firefox. However, I didn't get around to completing the test.  
+*/
 	
 	@Test
 	public void signInToAccount() {
@@ -76,6 +90,14 @@ public class Userflow1 {
 		signInPage.clickSignIn();
 		
 		test.log(LogStatus.INFO, "Login details entered");
+		
+		// I was able to get this user flow to work on firefox by entering this pause
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		accountPage = new MyAccount(driver);
 		String accountPageTitle = accountPage.getTitle();
