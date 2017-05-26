@@ -31,15 +31,6 @@ public class Userflow1 {
 	
 	public void goToSignIn() {
 		
-		// create the report file
-		report = new ExtentReports("C:\\Users\\Administrator\\Desktop\\Userflow1.html",true);
-		
-		// start the test
-		test = report.startTest("Logging in and out");
-		
-		// add a note to the test
-				test.log(LogStatus.INFO, "Browser started");
-		
 	
 	System.setProperty("webdriver.chrome.driver", "C:\\Users\\Administrator\\Desktop\\Selenium\\chromedriver.exe");
 	driver = new ChromeDriver();
@@ -57,10 +48,17 @@ public class Userflow1 {
 	
 	}
 	
-	
-	
 	@Test
 	public void signInToAccount() {
+		
+		// create the report file
+				report = new ExtentReports("C:\\Users\\Administrator\\Desktop\\Userflow1.html",true);
+				
+				// start the test
+				test = report.startTest("Logging in and out");
+				
+				// add a note to the test
+						test.log(LogStatus.INFO, "Browser started");
 		
 		homePage = new Home(driver);
 		String homePageTitle = homePage.getTitle();
